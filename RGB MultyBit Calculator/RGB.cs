@@ -127,7 +127,8 @@ namespace RGB_MultyBit_Calculator {
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
-
+            Form f = new AboutBox();
+            f.ShowDialog();
         }
 
     }
