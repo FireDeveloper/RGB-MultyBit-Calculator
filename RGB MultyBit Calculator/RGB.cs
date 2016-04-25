@@ -17,13 +17,21 @@ namespace RGB_MultyBit_Calculator {
         byte green = 0;
         byte blue = 0;
 
+
         private void RGB_Load(object sender, EventArgs e) {
-            // RGBcolorPanel.CreateGraphics();
             setRGB();
         }
 
-        private Int32 showHex(byte r, byte b, byte g) {
-            int result = ((r / 8) << 11) | ((b / 4) << 5) | (g / 8);
+        private Int32 showHex(byte r, byte g, byte b) {
+            int result = ((r / 8) << 11) | ((g / 4) << 5) | (b / 8);
+            return Convert.ToInt32(result);
+        }
+
+        private Int32 showHexNot(byte r, byte g, byte b) {
+            int R = ~r & 0x000000FF;
+            int B = ~b & 0x000000FF;
+            int G = ~g & 0x000000FF;
+            int result = ((R / 8) << 11) | ((G / 4) << 5) | (B / 8);
             return Convert.ToInt32(result);
         }
 
@@ -49,6 +57,7 @@ namespace RGB_MultyBit_Calculator {
 
             txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
             RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
+            txtHexBoxNot.Text = "0x" + showHexNot(red, green, blue).ToString("X").PadLeft(4, '0');
         }
 
         private void setRGB() {
@@ -64,6 +73,7 @@ namespace RGB_MultyBit_Calculator {
 
             txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
             RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
+            txtHexBoxNot.Text = "0x" + showHexNot(red, green, blue).ToString("X").PadLeft(4, '0');
         }
 
         private void RedBar_Scroll(object sender, EventArgs e) {

@@ -41,6 +41,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtHexBoxNot = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RedBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GreenBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlueBar)).BeginInit();
@@ -136,16 +139,16 @@
             // 
             // RGBcolorPanel
             // 
-            this.RGBcolorPanel.Location = new System.Drawing.Point(385, 66);
+            this.RGBcolorPanel.Location = new System.Drawing.Point(385, 56);
             this.RGBcolorPanel.Name = "RGBcolorPanel";
-            this.RGBcolorPanel.Size = new System.Drawing.Size(120, 73);
+            this.RGBcolorPanel.Size = new System.Drawing.Size(120, 26);
             this.RGBcolorPanel.TabIndex = 6;
             // 
             // txtHexBox
             // 
             this.txtHexBox.BackColor = System.Drawing.Color.White;
             this.txtHexBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtHexBox.Location = new System.Drawing.Point(385, 145);
+            this.txtHexBox.Location = new System.Drawing.Point(385, 101);
             this.txtHexBox.Name = "txtHexBox";
             this.txtHexBox.ReadOnly = true;
             this.txtHexBox.Size = new System.Drawing.Size(120, 26);
@@ -185,7 +188,7 @@
             // 
             this.HighRGB.AutoSize = true;
             this.HighRGB.Checked = true;
-            this.HighRGB.Location = new System.Drawing.Point(385, 177);
+            this.HighRGB.Location = new System.Drawing.Point(391, 178);
             this.HighRGB.Name = "HighRGB";
             this.HighRGB.Size = new System.Drawing.Size(103, 17);
             this.HighRGB.TabIndex = 10;
@@ -196,7 +199,7 @@
             // LowRGB
             // 
             this.LowRGB.AutoSize = true;
-            this.LowRGB.Location = new System.Drawing.Point(385, 200);
+            this.LowRGB.Location = new System.Drawing.Point(391, 201);
             this.LowRGB.Name = "LowRGB";
             this.LowRGB.Size = new System.Drawing.Size(101, 17);
             this.LowRGB.TabIndex = 11;
@@ -206,7 +209,7 @@
             // BtnColor
             // 
             this.BtnColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.BtnColor.Location = new System.Drawing.Point(385, 37);
+            this.BtnColor.Location = new System.Drawing.Point(385, 27);
             this.BtnColor.Name = "BtnColor";
             this.BtnColor.Size = new System.Drawing.Size(120, 23);
             this.BtnColor.TabIndex = 12;
@@ -236,7 +239,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -247,11 +250,43 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // txtHexBoxNot
+            // 
+            this.txtHexBoxNot.BackColor = System.Drawing.Color.White;
+            this.txtHexBoxNot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.txtHexBoxNot.Location = new System.Drawing.Point(385, 146);
+            this.txtHexBoxNot.Name = "txtHexBoxNot";
+            this.txtHexBoxNot.ReadOnly = true;
+            this.txtHexBoxNot.Size = new System.Drawing.Size(120, 26);
+            this.txtHexBoxNot.TabIndex = 14;
+            this.txtHexBoxNot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(401, 130);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Inverted RGB-565";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(404, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Normal RGB-565";
+            // 
             // RGB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 238);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtHexBoxNot);
             this.Controls.Add(this.BtnColor);
             this.Controls.Add(this.LowRGB);
             this.Controls.Add(this.HighRGB);
@@ -308,5 +343,8 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtHexBoxNot;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
