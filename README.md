@@ -9,9 +9,6 @@
 ###### Version History
 
 V 1.3: Bug Fix
-
 V 1.2: Inverted output added
-
 V 1.1: Release
-
 V 1.0: Beta Test
