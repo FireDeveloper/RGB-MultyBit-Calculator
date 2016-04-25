@@ -144,6 +144,7 @@
             // 
             // RGBcolorPanel
             // 
+            this.RGBcolorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RGBcolorPanel.Location = new System.Drawing.Point(385, 56);
             this.RGBcolorPanel.Name = "RGBcolorPanel";
             this.RGBcolorPanel.Size = new System.Drawing.Size(120, 26);
@@ -294,27 +295,28 @@
             // HighRGB
             // 
             this.HighRGB.AutoSize = true;
-            this.HighRGB.Checked = true;
             this.HighRGB.Location = new System.Drawing.Point(390, 194);
             this.HighRGB.Name = "HighRGB";
             this.HighRGB.Size = new System.Drawing.Size(103, 17);
             this.HighRGB.TabIndex = 10;
-            this.HighRGB.TabStop = true;
             this.HighRGB.Text = "Using High RGB";
             this.HighRGB.UseVisualStyleBackColor = true;
             // 
             // LowRGB
             // 
             this.LowRGB.AutoSize = true;
+            this.LowRGB.Checked = true;
             this.LowRGB.Location = new System.Drawing.Point(390, 218);
             this.LowRGB.Name = "LowRGB";
             this.LowRGB.Size = new System.Drawing.Size(101, 17);
             this.LowRGB.TabIndex = 11;
+            this.LowRGB.TabStop = true;
             this.LowRGB.Text = "Using Low RGB";
             this.LowRGB.UseVisualStyleBackColor = true;
             // 
             // RGBcolorPanelNot
             // 
+            this.RGBcolorPanelNot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RGBcolorPanelNot.Location = new System.Drawing.Point(385, 241);
             this.RGBcolorPanelNot.Name = "RGBcolorPanelNot";
             this.RGBcolorPanelNot.Size = new System.Drawing.Size(120, 26);

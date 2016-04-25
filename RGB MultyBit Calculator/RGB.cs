@@ -17,9 +17,9 @@ namespace RGB_MultyBit_Calculator {
         byte green = 0;
         byte blue = 0;
 
-
         private void RGB_Load(object sender, EventArgs e) {
-            setRGB();
+            RGBcolorPanel.BackColor = Color.FromArgb(0, 0, 0);
+            RGBcolorPanelNot.BackColor = Color.FromArgb(255, 255, 255);
         }
 
         private Int32 showHex(byte r, byte g, byte b) {
@@ -50,15 +50,7 @@ namespace RGB_MultyBit_Calculator {
             BlueBar.Value = blue;
             GreenBar.Value = green;
             RedBar.Value = red;
-
-            RedUpDown.Value = red;
-            GreenUpDown.Value = green;
-            BlueUpDown.Value = blue;
-
-            txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
-            RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
-            RGBcolorPanelNot.BackColor = Color.FromArgb((byte)~red, (byte)~green, (byte)~blue);
-            txtHexBoxNot.Text = "0x" + showHexNot(red, green, blue).ToString("X").PadLeft(4, '0');
+            setRGB();
         }
 
         private void getRGBNot() {
@@ -66,53 +58,36 @@ namespace RGB_MultyBit_Calculator {
             blue = Convert.ToByte(~((rgb & 0x1F) << 3) & 0x000000FF);
             green = Convert.ToByte(~(((rgb >> 5) & 0x3F) << 2) & 0x000000FF);
             red = Convert.ToByte(~(((rgb >> 11) & 0x1F) << 3) & 0x000000FF);
-            //~r & 0x000000FF;
-            if (HighRGB.Checked) {
-                blue = Convert.ToByte(blue | 0x7);
-                green = Convert.ToByte(green | 0x3);
-                red = Convert.ToByte(red | 0x7);
-            }
-
-            BlueBar.Value = blue;
-            GreenBar.Value = green;
-            RedBar.Value = red;
-
-            RedUpDown.Value = red;
-            GreenUpDown.Value = green;
-            BlueUpDown.Value = blue;
-
-            txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
-            RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
-            RGBcolorPanelNot.BackColor = Color.FromArgb((byte)~red, (byte)~green, (byte)~blue);
-            txtHexBoxNot.Text = "0x" + showHexNot(red, green, blue).ToString("X").PadLeft(4, '0');
+            setRGB();
         }
 
         private void setRGB() {
 
-            red = Convert.ToByte(RedBar.Value);
-            green = Convert.ToByte(GreenBar.Value);
-            blue = Convert.ToByte(BlueBar.Value);
-
             RedUpDown.Value = red;
             GreenUpDown.Value = green;
             BlueUpDown.Value = blue;
+
+            RGBUpDownNot.Value = showHex((byte)(~red & 0x000000FF), (byte)(~green & 0x000000FF), (byte)(~blue & 0x000000FF));
             RGBUpDown.Value = showHex(red, green, blue);
-            RGBUpDownNot.Value = showHex((byte)(~red & 0x000000FF), Convert.ToByte(~green & 0x000000FF), Convert.ToByte(~blue & 0x000000FF));
 
             txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
             RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
+            RGBcolorPanelNot.BackColor = Color.FromArgb((byte)(~red), (byte)(~green), (byte)(~blue));
             txtHexBoxNot.Text = "0x" + showHexNot(red, green, blue).ToString("X").PadLeft(4, '0');
         }
 
         private void RedBar_Scroll(object sender, EventArgs e) {
+            red = Convert.ToByte(RedBar.Value);
             setRGB();
         }
 
         private void GreenBar_Scroll(object sender, EventArgs e) {
+            green = Convert.ToByte(GreenBar.Value);
             setRGB();
         }
 
         private void BlueBar_Scroll(object sender, EventArgs e) {
+            blue = Convert.ToByte(BlueBar.Value);
             setRGB();
         }
 
@@ -126,16 +101,19 @@ namespace RGB_MultyBit_Calculator {
 
         private void RedUpDown_ValueChanged(object sender, EventArgs e) {
             RedBar.Value = Convert.ToInt32(RedUpDown.Value);
+            red = (byte)RedBar.Value;
             setRGB();
         }
 
         private void GreenUpDown_ValueChanged(object sender, EventArgs e) {
             GreenBar.Value = Convert.ToInt32(GreenUpDown.Value);
+            green = (byte)GreenBar.Value;
             setRGB();
         }
 
         private void BlueUpDown_ValueChanged(object sender, EventArgs e) {
             BlueBar.Value = Convert.ToInt32(BlueUpDown.Value);
+            blue = (byte)BlueBar.Value;
             setRGB();
         }
 
@@ -152,9 +130,9 @@ namespace RGB_MultyBit_Calculator {
         private void BtnColor_Click(object sender, EventArgs e) {
             ColorDialog d = new ColorDialog();
             if (d.ShowDialog() == DialogResult.OK) {
-                RedBar.Value = d.Color.R;
-                GreenBar.Value = d.Color.G;
-                BlueBar.Value = d.Color.B;
+                red = d.Color.R;
+                green = d.Color.G;
+                blue = d.Color.B;
                 setRGB();
             }
         }
