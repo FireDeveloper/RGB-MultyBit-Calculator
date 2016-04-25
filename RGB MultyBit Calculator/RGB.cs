@@ -57,6 +57,33 @@ namespace RGB_MultyBit_Calculator {
 
             txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
             RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
+            RGBcolorPanelNot.BackColor = Color.FromArgb((byte)~red, (byte)~green, (byte)~blue);
+            txtHexBoxNot.Text = "0x" + showHexNot(red, green, blue).ToString("X").PadLeft(4, '0');
+        }
+
+        private void getRGBNot() {
+            int rgb = RGBBarNot.Value;
+            blue = Convert.ToByte(~((rgb & 0x1F) << 3) & 0x000000FF);
+            green = Convert.ToByte(~(((rgb >> 5) & 0x3F) << 2) & 0x000000FF);
+            red = Convert.ToByte(~(((rgb >> 11) & 0x1F) << 3) & 0x000000FF);
+            //~r & 0x000000FF;
+            if (HighRGB.Checked) {
+                blue = Convert.ToByte(blue | 0x7);
+                green = Convert.ToByte(green | 0x3);
+                red = Convert.ToByte(red | 0x7);
+            }
+
+            BlueBar.Value = blue;
+            GreenBar.Value = green;
+            RedBar.Value = red;
+
+            RedUpDown.Value = red;
+            GreenUpDown.Value = green;
+            BlueUpDown.Value = blue;
+
+            txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
+            RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
+            RGBcolorPanelNot.BackColor = Color.FromArgb((byte)~red, (byte)~green, (byte)~blue);
             txtHexBoxNot.Text = "0x" + showHexNot(red, green, blue).ToString("X").PadLeft(4, '0');
         }
 
@@ -70,6 +97,7 @@ namespace RGB_MultyBit_Calculator {
             GreenUpDown.Value = green;
             BlueUpDown.Value = blue;
             RGBUpDown.Value = showHex(red, green, blue);
+            RGBUpDownNot.Value = showHex((byte)(~red & 0x000000FF), Convert.ToByte(~green & 0x000000FF), Convert.ToByte(~blue & 0x000000FF));
 
             txtHexBox.Text = "0x" + showHex(red, green, blue).ToString("X").PadLeft(4, '0');
             RGBcolorPanel.BackColor = Color.FromArgb(red, green, blue);
@@ -92,6 +120,10 @@ namespace RGB_MultyBit_Calculator {
             getRGB();
         }
 
+        private void RGBBarNot_Scroll(object sender, EventArgs e) {
+            getRGBNot();
+        }
+
         private void RedUpDown_ValueChanged(object sender, EventArgs e) {
             RedBar.Value = Convert.ToInt32(RedUpDown.Value);
             setRGB();
@@ -110,6 +142,11 @@ namespace RGB_MultyBit_Calculator {
         private void RGBUpDown_ValueChanged(object sender, EventArgs e) {
             RGBBar.Value = Convert.ToInt32(RGBUpDown.Value);
             getRGB();
+        }
+
+        private void RGBUpDownNot_ValueChanged(object sender, EventArgs e) {
+            RGBBarNot.Value = Convert.ToInt32(RGBUpDownNot.Value);
+            getRGBNot();
         }
 
         private void BtnColor_Click(object sender, EventArgs e) {

@@ -34,8 +34,6 @@
             this.txtHexBox = new System.Windows.Forms.TextBox();
             this.RGBUpDown = new System.Windows.Forms.NumericUpDown();
             this.RGBBar = new System.Windows.Forms.TrackBar();
-            this.HighRGB = new System.Windows.Forms.RadioButton();
-            this.LowRGB = new System.Windows.Forms.RadioButton();
             this.BtnColor = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +42,11 @@
             this.txtHexBoxNot = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.RGBBarNot = new System.Windows.Forms.TrackBar();
+            this.RGBUpDownNot = new System.Windows.Forms.NumericUpDown();
+            this.HighRGB = new System.Windows.Forms.RadioButton();
+            this.LowRGB = new System.Windows.Forms.RadioButton();
+            this.RGBcolorPanelNot = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.RedBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GreenBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlueBar)).BeginInit();
@@ -53,6 +56,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RGBUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RGBBar)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RGBBarNot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RGBUpDownNot)).BeginInit();
             this.SuspendLayout();
             // 
             // RedBar
@@ -148,7 +153,7 @@
             // 
             this.txtHexBox.BackColor = System.Drawing.Color.White;
             this.txtHexBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtHexBox.Location = new System.Drawing.Point(385, 101);
+            this.txtHexBox.Location = new System.Drawing.Point(385, 111);
             this.txtHexBox.Name = "txtHexBox";
             this.txtHexBox.ReadOnly = true;
             this.txtHexBox.Size = new System.Drawing.Size(120, 26);
@@ -170,7 +175,7 @@
             this.RGBUpDown.Name = "RGBUpDown";
             this.RGBUpDown.Size = new System.Drawing.Size(60, 23);
             this.RGBUpDown.TabIndex = 8;
-            this.RGBUpDown.Tag = "RED";
+            this.RGBUpDown.Tag = "RGB";
             this.RGBUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.RGBUpDown.ValueChanged += new System.EventHandler(this.RGBUpDown_ValueChanged);
             // 
@@ -183,28 +188,6 @@
             this.RGBBar.TabIndex = 9;
             this.RGBBar.TickFrequency = 1285;
             this.RGBBar.Scroll += new System.EventHandler(this.RGBBar_Scroll);
-            // 
-            // HighRGB
-            // 
-            this.HighRGB.AutoSize = true;
-            this.HighRGB.Checked = true;
-            this.HighRGB.Location = new System.Drawing.Point(391, 178);
-            this.HighRGB.Name = "HighRGB";
-            this.HighRGB.Size = new System.Drawing.Size(103, 17);
-            this.HighRGB.TabIndex = 10;
-            this.HighRGB.TabStop = true;
-            this.HighRGB.Text = "Using High RGB";
-            this.HighRGB.UseVisualStyleBackColor = true;
-            // 
-            // LowRGB
-            // 
-            this.LowRGB.AutoSize = true;
-            this.LowRGB.Location = new System.Drawing.Point(391, 201);
-            this.LowRGB.Name = "LowRGB";
-            this.LowRGB.Size = new System.Drawing.Size(101, 17);
-            this.LowRGB.TabIndex = 11;
-            this.LowRGB.Text = "Using Low RGB";
-            this.LowRGB.UseVisualStyleBackColor = true;
             // 
             // BtnColor
             // 
@@ -254,7 +237,7 @@
             // 
             this.txtHexBoxNot.BackColor = System.Drawing.Color.White;
             this.txtHexBoxNot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtHexBoxNot.Location = new System.Drawing.Point(385, 146);
+            this.txtHexBoxNot.Location = new System.Drawing.Point(385, 162);
             this.txtHexBoxNot.Name = "txtHexBoxNot";
             this.txtHexBoxNot.ReadOnly = true;
             this.txtHexBoxNot.Size = new System.Drawing.Size(120, 26);
@@ -264,7 +247,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(401, 130);
+            this.label1.Location = new System.Drawing.Point(400, 146);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 15;
@@ -273,17 +256,78 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(404, 85);
+            this.label2.Location = new System.Drawing.Point(400, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 16;
             this.label2.Text = "Normal RGB-565";
             // 
+            // RGBBarNot
+            // 
+            this.RGBBarNot.Location = new System.Drawing.Point(79, 241);
+            this.RGBBarNot.Maximum = 65535;
+            this.RGBBarNot.Name = "RGBBarNot";
+            this.RGBBarNot.Size = new System.Drawing.Size(300, 45);
+            this.RGBBarNot.TabIndex = 17;
+            this.RGBBarNot.TickFrequency = 1285;
+            this.RGBBarNot.Scroll += new System.EventHandler(this.RGBBarNot_Scroll);
+            // 
+            // RGBUpDownNot
+            // 
+            this.RGBUpDownNot.BackColor = System.Drawing.Color.Black;
+            this.RGBUpDownNot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.RGBUpDownNot.ForeColor = System.Drawing.Color.White;
+            this.RGBUpDownNot.Hexadecimal = true;
+            this.RGBUpDownNot.Location = new System.Drawing.Point(13, 241);
+            this.RGBUpDownNot.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.RGBUpDownNot.Name = "RGBUpDownNot";
+            this.RGBUpDownNot.Size = new System.Drawing.Size(60, 23);
+            this.RGBUpDownNot.TabIndex = 18;
+            this.RGBUpDownNot.Tag = "RGB Not";
+            this.RGBUpDownNot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RGBUpDownNot.ValueChanged += new System.EventHandler(this.RGBUpDownNot_ValueChanged);
+            // 
+            // HighRGB
+            // 
+            this.HighRGB.AutoSize = true;
+            this.HighRGB.Checked = true;
+            this.HighRGB.Location = new System.Drawing.Point(390, 194);
+            this.HighRGB.Name = "HighRGB";
+            this.HighRGB.Size = new System.Drawing.Size(103, 17);
+            this.HighRGB.TabIndex = 10;
+            this.HighRGB.TabStop = true;
+            this.HighRGB.Text = "Using High RGB";
+            this.HighRGB.UseVisualStyleBackColor = true;
+            // 
+            // LowRGB
+            // 
+            this.LowRGB.AutoSize = true;
+            this.LowRGB.Location = new System.Drawing.Point(390, 218);
+            this.LowRGB.Name = "LowRGB";
+            this.LowRGB.Size = new System.Drawing.Size(101, 17);
+            this.LowRGB.TabIndex = 11;
+            this.LowRGB.Text = "Using Low RGB";
+            this.LowRGB.UseVisualStyleBackColor = true;
+            // 
+            // RGBcolorPanelNot
+            // 
+            this.RGBcolorPanelNot.Location = new System.Drawing.Point(385, 241);
+            this.RGBcolorPanelNot.Name = "RGBcolorPanelNot";
+            this.RGBcolorPanelNot.Size = new System.Drawing.Size(120, 26);
+            this.RGBcolorPanelNot.TabIndex = 7;
+            // 
             // RGB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 238);
+            this.ClientSize = new System.Drawing.Size(520, 292);
+            this.Controls.Add(this.RGBcolorPanelNot);
+            this.Controls.Add(this.RGBUpDownNot);
+            this.Controls.Add(this.RGBBarNot);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHexBoxNot);
@@ -319,6 +363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RGBBar)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RGBBarNot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RGBUpDownNot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,8 +382,6 @@
         private System.Windows.Forms.TextBox txtHexBox;
         private System.Windows.Forms.NumericUpDown RGBUpDown;
         private System.Windows.Forms.TrackBar RGBBar;
-        private System.Windows.Forms.RadioButton HighRGB;
-        private System.Windows.Forms.RadioButton LowRGB;
         private System.Windows.Forms.Button BtnColor;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -346,5 +390,10 @@
         private System.Windows.Forms.TextBox txtHexBoxNot;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar RGBBarNot;
+        private System.Windows.Forms.NumericUpDown RGBUpDownNot;
+        private System.Windows.Forms.RadioButton HighRGB;
+        private System.Windows.Forms.RadioButton LowRGB;
+        private System.Windows.Forms.Panel RGBcolorPanelNot;
     }
 }
